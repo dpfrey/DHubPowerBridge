@@ -1,0 +1,30 @@
+sources:
+{
+    main.c
+}
+
+requires:
+{
+    api:
+    {
+        le_ulpm.api
+        le_bootReason.api
+        io.api
+    }
+
+    file:
+    {
+        /legato/systems/current/lib/libjansson.so /usr/lib/
+    }
+}
+
+ldflags:
+{
+    -ljansson
+}
+
+cflags:
+{
+    -std=c99
+    -I$LEGATO_BUILD/framework/libjansson/include
+}

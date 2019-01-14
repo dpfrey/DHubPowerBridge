@@ -1,0 +1,29 @@
+sandboxed: true
+version: 1.0.0
+start: auto
+
+
+executables:
+{
+    dhubPowerBridge = ( dhubPowerBridgeComponent )
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
+    run:
+    {
+        ( dhubPowerBridge )
+    }
+    faultAction: restart
+}
+
+bindings:
+{
+    dhubPowerBridge.dhubPowerBridgeComponent.io            -> dataHub.io
+    dhubPowerBridge.dhubPowerBridgeComponent.le_ulpm       -> powerMgr.le_ulpm
+    dhubPowerBridge.dhubPowerBridgeComponent.le_bootReason -> powerMgr.le_bootReason
+}
